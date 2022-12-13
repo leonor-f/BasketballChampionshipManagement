@@ -1,0 +1,1 @@
+DROP AddPonto IF EXISTS;

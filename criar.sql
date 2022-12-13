@@ -54,7 +54,7 @@ create table Pavilhao (
 create table Contrato (
     nr_licenca INTEGER(6) PRIMARY KEY,
     nome_clube VARCHAR(50) NOT NULL,
-    data_inicio DATE,
+    data_inicio DATE NOT NULL,
     data_fim DATE NOT NULL CHECK(data_fim > data_inicio),
     salario FLOAT NOT NULL CHECK(salario >= 0.0),
     FOREIGN KEY(nr_licenca) REFERENCES Jogador(nr_licenca) ON DELETE CASCADE ON UPDATE CASCADE,
