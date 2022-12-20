@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---Média da Capacidade do Pavilhão por Grupo
+--Capacidade média dos pavilhões por Grupo
 
 SELECT g.letra as GRUPO, ROUND(AVG(p.capacidade), 0) as MÉDIA
 FROM Grupo g
