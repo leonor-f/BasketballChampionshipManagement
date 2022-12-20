@@ -44,7 +44,8 @@ create table Jogo (
 );
 
 create table Pavilhao (
-    id_pavilhao VARCHAR(50) PRIMARY KEY,
+    id_pavilhao INTEGER PRIMARY KEY,
+    nome_pavilhao VARCHAR(50) NOT NULL,
     nome_clube VARCHAR(50) NOT NULL,
     morada VARCHAR(100) NOT NULL,
     capacidade INTEGER CHECK(capacidade >= 0) DEFAULT 0,
@@ -54,7 +55,7 @@ create table Pavilhao (
 create table Contrato (
     nr_licenca INTEGER(6) PRIMARY KEY,
     nome_clube VARCHAR(50) NOT NULL,
-    data_inicio DATE,
+    data_inicio DATE NOT NULL,
     data_fim DATE NOT NULL CHECK(data_fim > data_inicio),
     salario FLOAT NOT NULL CHECK(salario >= 0.0),
     FOREIGN KEY(nr_licenca) REFERENCES Jogador(nr_licenca) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -62,15 +63,18 @@ create table Contrato (
 );
 
 create table EstatisticasClube (
-    nome_clube VARCHAR(50) PRIMARY KEY,
+    idEstatistica INTEGER PRIMARY KEY,
+    nome_clube VARCHAR(50),
+    ano YEAR NOT NULL,
     posicao INTEGER CHECK(posicao >= 1 AND posicao <= 12) NOT NULL,
     n_jogos INTEGER CHECK(n_jogos >= 0) NOT NULL,
     pontuacao INTEGER CHECK(pontuacao >= 0) NOT NULL,
     n_vitorias INTEGER CHECK(n_vitorias >= 0) NOT NULL,
     n_derrotas INTEGER CHECK(n_derrotas >= 0) NOT NULL,
+    n_pontos_marcados INTEGER CHECK(n_pontos_marcados >= 0) NOT NULL,
     n_pontos_sofridos INTEGER CHECK(n_pontos_sofridos >= 0) NOT NULL,
-    n_pontos_marcados INTEGER CHECK(n_pontos_marcados >= 0) NOT NULL, 
-    FOREIGN KEY(nome_clube) REFERENCES Clube(nome_clube) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY(nome_clube) REFERENCES Clube(nome_clube) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(ano) REFERENCES Campeonato(ano) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table Grupo (

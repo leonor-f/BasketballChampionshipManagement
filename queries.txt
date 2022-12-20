@@ -1,3 +1,0 @@
-5 jogadores que marcaram + pontos num campeonato
-quantas vezes determinado jogador saiu num campeonato
-pontos marcados por grupo num campeonato
